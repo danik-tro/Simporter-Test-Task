@@ -18,8 +18,8 @@ class Grouping(str, Enum):
 class TimelineQuery(BaseModel):
     start_date: date
     end_date: date
-    type: Type
-    grouping: Grouping
+    Type: Type
+    Grouping: Grouping
     stars: Optional[List[int]] = None
     brand: Optional[List[str]] = None
     asin: Optional[List[str]] = None

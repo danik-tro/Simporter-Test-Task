@@ -33,15 +33,15 @@ def aggregation(df: pd.DataFrame, query: TimelineQuery):
     df.index = pd.to_datetime(df.index, unit='s')
 
     freq = 'M'
-    if query.grouping == Grouping.weekly:
+    if query.Grouping == Grouping.weekly:
         freq = 'W'
-    elif query.grouping == Grouping.bi_weekly:
+    elif query.Grouping == Grouping.bi_weekly:
         freq = '2W'
 
     result = df.resample(freq).agg(
         {'id': 'count'})
 
-    if query.type == Type.cumulative:
+    if query.Type == Type.cumulative:
         result.loc[:, 'id'] = np.cumsum(result.loc[:, ['id']].to_numpy())
 
     return {'timeline': [
